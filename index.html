@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Typing Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 10px 20px 0 0;
+            padding: 0;
+            background-color: #000;
+            color: #00ff00;
+            height: 100vh;
+            font-family: "Monospace", monospace;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-rectangle {
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 110%;
+            height: 20px;
+            background-color: #808080;
+        }
+
+        .terminal-text {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Add styles for the buttons */
+        .buttons-container {
+            position: absolute;
+            top: 30px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #000;
+            color: #808080;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: bold; /* Bold the text */
+        }
+
+        .button:hover {
+            background-color: #808080;
+            color: #000;
+        }
+
+        .animated-text {
+            font-size: 4vw;
+            font-weight: 100;
+            max-width: 90vw;
+            display: flex;
+            align-items: center;
+        }
+
+        .animated-text span {
+            position: relative;
+        }
+
+        .animated-text span::before {
+            content: "Hello, I'm ";
+            color: #00ff00;
+        }
+
+        .animated-text span::after {
+            content: "";
+            position: absolute;
+            width: calc(100% + 8px);
+            height: 100%;
+            background-color: #000;
+            border-left: 2px solid #00ff00;
+            right: -8px;
+            animation: cursor .8s infinite, typing 20s steps(14) infinite;
+        }
+
+        @keyframes cursor {
+            to {
+                border-left: 2px solid #00ff0000;
+            }
+        }
+
+        @keyframes typing {
+            10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+                width: 0;
+            }
+            5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
+                width: calc(100% + 8px);
+            }
+        }
+
+        .animated-text span::before {
+            content: "lazerwild";
+            color: #00ff00;
+            animation: words 20s infinite;
+        }
+
+        @keyframes words {
+            0%, 20% {
+                content: "lazerwild";
+            }
+            21%, 40% {
+                content: "Uday Kasturi";
+            }
+            41%, 60% {
+                content: "lazerwild";
+            }
+            61%, 80% {
+                content: "Uday Kasturi";
+            }
+            81%, 100% {
+                content: "lazerwild";
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-rectangle"></div>
+    <div class="terminal-text">Terminal</div>
+
+    <!-- Add buttons -->
+    <div class="buttons-container">
+        <button class="button">About me</button>
+        <button class="button">Blog</button>
+        <button class="button">Contact</button>
+    </div>
+
+    <img src="hello.png" alt="Hello Image" style="position: absolute; top: 240px; transform: translateX(80px) scale(0.8);">
+    <div class="animated-text">
+        <span></span>
+    </div>
+</body>
+
+</html>
